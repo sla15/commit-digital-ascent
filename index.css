@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans;
+  }
+}
+
+@layer components {
+  /* Premium Squircle Card Utility */
+  .squircle-card {
+    @apply bg-white rounded-[3rem] shadow-squircle border border-white/80 transition-all duration-500 overflow-hidden;
+  }
+  
+  .glass-header {
+    @apply bg-white/70 backdrop-blur-2xl border border-white/40 shadow-xl supports-[backdrop-filter]:bg-white/50;
+  }
+
+  .premium-gradient-blue {
+    @apply bg-gradient-to-br from-brand-900 via-brand-950 to-brand-950;
+  }
+}
+
+/* Custom shadow and perspective effects */
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(circle at 1px 1px, #e2e8f0 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Animated subtle gradient for headings */
+.text-gradient-premium {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-900 via-brand-600 to-brand-800;
+}

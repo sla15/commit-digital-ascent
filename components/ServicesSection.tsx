@@ -1,0 +1,75 @@
+import React from 'react';
+import { Section } from './ui/Section';
+import { SERVICES } from '../constants';
+import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Button } from './ui/Button';
+
+export const ServicesSection: React.FC = () => {
+  return (
+    <Section id="services" className="bg-slate-50/50" overflow="overflow-visible">
+      <div className="text-center max-w-3xl mx-auto mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-brand-600 font-bold uppercase tracking-[0.2em] text-sm mb-4">Core Solutions</h2>
+          <h3 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-6 leading-tight">
+            Premium ICT & <br/> Advisory Services
+          </h3>
+          <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            Providing the technical backbone and strategic foresight for sustainable national development.
+          </p>
+        </motion.div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+        {SERVICES.map((service, index) => (
+          <motion.div
+            key={service.id}
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.7, 
+              delay: index * 0.15,
+              type: "spring",
+              stiffness: 60,
+              damping: 20
+            }}
+            className="group relative bg-white rounded-squircle p-10 md:p-14 shadow-squircle border border-white flex flex-col h-full hover:shadow-glow transition-all duration-700 overflow-hidden"
+          >
+            {/* Hover visual: Subtle gradient light */}
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="w-20 h-20 bg-brand-900 rounded-3xl flex items-center justify-center text-white mb-10 shadow-xl group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+                <service.icon size={36} />
+              </div>
+              
+              <h4 className="text-3xl font-bold text-slate-900 mb-5 group-hover:text-brand-700 transition-colors font-display tracking-tight">
+                {service.title}
+              </h4>
+              
+              <p className="text-slate-600 leading-relaxed mb-12 flex-grow text-lg font-medium opacity-80 group-hover:opacity-100 transition-opacity">
+                {service.description}
+              </p>
+
+              <Link to="/services">
+                <Button variant="secondary" className="w-full justify-between py-6 bg-slate-50 border-slate-100 group-hover:bg-brand-50 group-hover:border-brand-200 transition-all rounded-[1.5rem] group-hover:shadow-lg">
+                  <span className="font-bold">Learn More</span>
+                  <div className="bg-brand-900 text-white p-2.5 rounded-full group-hover:translate-x-1 transition-transform">
+                    <ArrowRight className="w-5 h-5" />
+                  </div>
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </Section>
+  );
+};
