@@ -1,10 +1,25 @@
+/* Global box-sizing to avoid layout overflow */
+*, *::before, *::after { box-sizing: border-box; }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  html, body, #root {
+    /* Prevent horizontal overflow on small devices */
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-slate-50 text-slate-900 font-sans;
+  }
+
+  /* Ensure images don't exceed their containers */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
