@@ -4,6 +4,7 @@ import { Button } from '../components/ui/Button';
 import { CONTACT_INFO } from '../constants';
 import { Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { getEntranceOffset } from '../utils/animationHelpers';
 
 export const ContactPage: React.FC = () => {
   return (
@@ -15,14 +16,14 @@ export const ContactPage: React.FC = () => {
              
              <div className="max-w-7xl mx-auto relative z-10 text-center">
                 <motion.span 
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: getEntranceOffset(60, 10) }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-brand-300 font-semibold tracking-wider uppercase text-sm mb-4 block"
                 >
                     Get in Touch
                 </motion.span>
                 <motion.h1 
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: getEntranceOffset(80, 20) }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                     className="text-4xl md:text-6xl font-display font-bold text-white mb-6"
@@ -30,7 +31,7 @@ export const ContactPage: React.FC = () => {
                     Let's Discuss Your Project
                 </motion.h1>
                 <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: getEntranceOffset(80, 20) }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                     className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed"
@@ -44,8 +45,8 @@ export const ContactPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
             {/* Contact Info Card */}
             <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, x: -20, y: getEntranceOffset(80, 0) }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true }}
                 className="lg:col-span-1 bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 h-fit"
             >
@@ -103,7 +104,7 @@ export const ContactPage: React.FC = () => {
 
             {/* Contact Form */}
             <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: getEntranceOffset(80, 20) }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="lg:col-span-2 bg-white p-8 md:p-12 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100"

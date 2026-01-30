@@ -4,6 +4,7 @@ import { Button } from './ui/Button';
 import { motion, Variants } from 'framer-motion';
 import { Search, PenTool, Rocket, ShieldCheck, ArrowRight, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getEntranceOffset } from '../utils/animationHelpers';
 
 const steps = [
   {
@@ -44,7 +45,7 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0, y: getEntranceOffset(80, 30), scale: 0.95 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 100, damping: 20 } }
 };
 
@@ -53,7 +54,7 @@ export const ApproachSection: React.FC = () => {
     <Section id="approach" bg="white" className="overflow-visible pb-32">
       <div className="text-center max-w-3xl mx-auto mb-24">
         <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: getEntranceOffset(80, 20) }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-brand-600 font-bold uppercase tracking-[0.2em] text-sm mb-4"
         >
@@ -120,7 +121,7 @@ export const ApproachSection: React.FC = () => {
       </div>
 
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: getEntranceOffset(80, 30) }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
         className="mt-24 flex justify-center"

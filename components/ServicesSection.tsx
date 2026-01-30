@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 import { shouldRunAnimations } from '../utils/animationState';
+import { getEntranceOffset } from '../utils/animationHelpers';
 
 
 
@@ -14,7 +15,7 @@ export const ServicesSection: React.FC = () => {
     <Section id="services" className="bg-slate-50/50" overflow="overflow-visible">
       <div className="text-center max-w-3xl mx-auto mb-20">
         <motion.div
-          initial={shouldRunAnimations() ? { opacity: 0, y: 30 } : undefined}
+          initial={shouldRunAnimations() ? { opacity: 0, y: getEntranceOffset(80, 30) } : undefined}
           whileInView={shouldRunAnimations() ? { opacity: 1, y: 0 } : undefined}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8 }}
@@ -34,7 +35,7 @@ export const ServicesSection: React.FC = () => {
         {SERVICES.map((service, index) => (
           <motion.div
             key={service.id}
-            initial={shouldRunAnimations() ? { opacity: 0, y: 40, scale: 0.98 } : undefined}
+            initial={shouldRunAnimations() ? { opacity: 0, y: getEntranceOffset(), scale: 0.98 } : undefined}
             whileInView={shouldRunAnimations() ? { opacity: 1, y: 0, scale: 1 } : undefined}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.7, delay: index * 0.12, type: 'spring', stiffness: 60, damping: 18 }}
@@ -65,7 +66,7 @@ export const ServicesSection: React.FC = () => {
         {SERVICES.map((service, index) => (
           <motion.div
             key={service.id}
-            initial={shouldRunAnimations() ? { opacity: 0, y: 60, scale: 0.95 } : undefined}
+            initial={shouldRunAnimations() ? { opacity: 0, y: getEntranceOffset(100, 60), scale: 0.95 } : undefined}
             whileInView={shouldRunAnimations() ? { opacity: 1, y: 0, scale: 1 } : undefined}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ 

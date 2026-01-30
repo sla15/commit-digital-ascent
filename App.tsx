@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { getEntranceOffset } from './utils/animationHelpers';
 import { Header } from './components/Header';
 import { ContactSection } from './components/ContactSection';
 import { HomePage } from './pages/HomePage';
@@ -15,7 +16,7 @@ interface PageWrapperProps {
 
 const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20, filter: 'blur(5px)' }}
+    initial={{ opacity: 0, y: getEntranceOffset(60, 20), filter: 'blur(5px)' }}
     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
     exit={{ opacity: 0, y: -20, filter: 'blur(5px)' }}
     transition={{ duration: 0.5, ease: "easeOut" }}

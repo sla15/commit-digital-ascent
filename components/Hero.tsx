@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { shouldRunAnimations, markAnimationsPlayed } from '../utils/animationState';
+import { getEntranceOffset } from '../utils/animationHelpers';
 import { ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 import { Button } from './ui/Button';
 import { Link } from 'react-router-dom';
@@ -77,7 +78,7 @@ export const Hero: React.FC = () => {
 
               <div className="relative mb-8">
                 <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: getEntranceOffset(80, 30) }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white tracking-tight leading-[1.05]"
@@ -120,7 +121,7 @@ export const Hero: React.FC = () => {
               </div>
 
               <motion.p
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: getEntranceOffset(80, 30) }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-lg md:text-xl text-slate-300 leading-relaxed mb-10 max-w-xl border-l-2 border-brand-500 pl-6"
@@ -129,7 +130,7 @@ export const Hero: React.FC = () => {
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: getEntranceOffset(80, 30) }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto"

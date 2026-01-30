@@ -4,6 +4,7 @@ import { VALUES } from '../constants';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { getEntranceOffset } from '../utils/animationHelpers';
 
 export const ValuesSection: React.FC = () => {
   return (
@@ -23,19 +24,19 @@ export const ValuesSection: React.FC = () => {
               Our Foundation
             </motion.h2>
             <motion.h3 
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: getEntranceOffset(80, 20) }} whileInView={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-6xl font-display font-bold mb-8 leading-tight"
             >
               Built on Professional <br/> Integrity
             </motion.h3>
             <motion.p 
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: getEntranceOffset(80, 20) }} whileInView={{ opacity: 1, y: 0 }}
               className="text-brand-100 text-xl leading-relaxed"
             >
               Our values drive every solution we build and every partnership we cultivate.
             </motion.p>
           </div>
-          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}>
+          <motion.div initial={{ opacity: 0, x: 20, y: getEntranceOffset(80, 0) }} whileInView={{ opacity: 1, x: 0, y: 0 }}>
             <Link to="/about" className="group inline-flex items-center gap-4 px-10 py-5 bg-brand-600 hover:bg-brand-500 rounded-3xl transition-all text-white font-bold shadow-2xl shadow-brand-600/30">
               Meet Our Team <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -46,7 +47,7 @@ export const ValuesSection: React.FC = () => {
           {VALUES.map((value, index) => (
             <motion.div 
               key={value.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: getEntranceOffset(80, 30) }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.12 }}

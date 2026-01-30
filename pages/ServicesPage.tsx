@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SERVICES } from '../constants';
+import { getEntranceOffset } from '../utils/animationHelpers';
 import { Section } from '../components/ui/Section';
 import { Button } from '../components/ui/Button';
 import { CheckCircle2, ChevronRight } from 'lucide-react';
@@ -23,7 +24,7 @@ export const ServicesPage: React.FC = () => {
         {SERVICES.map((service, index) => (
             <motion.div 
                 key={service.id}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: getEntranceOffset(100, 50) }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}

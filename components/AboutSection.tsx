@@ -5,14 +5,15 @@ import { Target, Eye, CheckCircle2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
+import { getEntranceOffset } from '../utils/animationHelpers';
 
 export const AboutSection: React.FC = () => {
   return (
     <Section id="overview" className="relative overflow-visible pb-32">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -50, y: getEntranceOffset(80, 0) }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="flex flex-col gap-10"
@@ -55,7 +56,7 @@ export const AboutSection: React.FC = () => {
           ].map((box, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: getEntranceOffset(80, 40) }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.3 }}
