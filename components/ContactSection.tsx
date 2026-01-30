@@ -12,7 +12,7 @@ export const ContactSection: React.FC = () => {
             <div className="col-span-1 md:col-span-2">
                 <div className="flex items-center gap-2 mb-6">
                     <img 
-                      src="/public/favicon.png" 
+                      src="/favicon.png" 
                       alt="CommIT Enterprise" 
                       className="h-12 w-auto object-contain  opacity-90" 
                     />
