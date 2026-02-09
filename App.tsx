@@ -8,6 +8,8 @@ import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
+import { AdminLoginPage } from './pages/AdminLoginPage';
+import { AdminPage } from './pages/AdminPage';
 import { ScrollToTop } from './components/ScrollToTop';
 
 interface PageWrapperProps {
@@ -28,16 +30,32 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => (
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
+
+  if (isAdmin) {
+    return (
+      <Routes location={location} key={location.pathname}>
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
+    );
+  }
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
-        <Route path="/services" element={<PageWrapper><ServicesPage /></PageWrapper>} />
-        <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
-        <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
-      </Routes>
-    </AnimatePresence>
+    <div className="min-h-screen flex flex-col font-sans bg-slate-50">
+      <Header />
+      <main className="flex-grow flex flex-col">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
+            <Route path="/services" element={<PageWrapper><ServicesPage /></PageWrapper>} />
+            <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
+            <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
+          </Routes>
+        </AnimatePresence>
+      </main>
+      <ContactSection />
+    </div>
   );
 };
 
@@ -45,13 +63,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col font-sans bg-slate-50">
-        <Header />
-        <main className="flex-grow flex flex-col">
-          <AnimatedRoutes />
-        </main>
-        <ContactSection />
-      </div>
+      <AnimatedRoutes />
     </Router>
   );
 }
